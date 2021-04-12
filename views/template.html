@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Template</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/public/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Company name</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="#">Sign out</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="sidebar-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">
+              <span data-feather="home"></span>
+              Dashboard <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file"></span>
+              Orders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="shopping-cart"></span>
+              Products
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="users"></span>
+              Customers
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="bar-chart-2"></span>
+              Reports
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="layers"></span>
+              Integrations
+            </a>
+          </li>
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Saved reports</span>
+          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Current month
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Last quarter
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Social engagement
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Year-end sale
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            This week
+          </button>
+        </div>
+      </div>
+
+      <canvas class="my-4 w-100" id="myChart" width="900" height="300"></canvas>
+
+      <h2>{{second_title}}</h2>
+      <div class="table-responsive">
+          <table class="table table-striped table-sm table-hover">
+              <thead>
+                  <tr>
+                    <th hidden class="stuId">id</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>出生年月</th>
+                    <th>爱好</th>
+                    <th>居住地</th>
+                    <th>操作</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {{each students}}
+                  <tr>
+                    <td style="display:none;" class="stuId">{{$value.id}}</td>
+                    <td class="stu-name">{{$value.name}}</td>
+                    <td class="stu-gender">{{$value.gender === "0"?"女":"男"}}</td>
+                    <td class="stu-birth">{{$value.birth}}</td>
+                    <td class="stu-hibbies">{{$value.hobbies}}</td>
+                    <td class="stu-addr">{{$value.location}}</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-primary add-btn" data-toggle="modal" data-target="#add_modal">添加</button>
+                        <button type="button" class="btn btn-sm btn-outline-info modify-btn" data-toggle="modal" data-target="#modify_modal">修改</button>
+                        <button type="button" class="btn btn-sm btn-outline-danger delete-btn" data-toggle="modal" data-target="#delete_modal">删除</button>
+                      </div>
+                    </td>
+                  </tr>
+                  {{/each}}
+              </tbody>
+          </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- 添加个人信息 模态框 -->
+<form action="/student/addInfo" method="post">
+  <div class="modal fade" id="add_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">添加学生信息</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <form>
+              <!-- id -->
+              <div class="form-group row" hidden>
+                <label for="student_id_add" class="col-sm-3 col-form-label">id：</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="student_id_add" value="" name="studentId">
+                </div>
+              </div>
+              <!-- 姓名 -->
+              <div class="form-group row">
+                <label for="student_name_add" class="col-sm-3 col-form-label">姓名：</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="student_name_add" value="" name="stu_name" placeholder="请输入学生姓名" required>
+                </div>
+              </div>
+              <!-- 性别 -->
+              <div class="form-group row  align-items-center">
+                <label for="inputPassword" class="col-sm-3 col-form-label">性别：</label>
+                <div class="col-sm-9">
+                  <!-- 女 -->
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="inline_girl_add" value="0" name="sex" required>
+                    <label class="form-check-label" for="inline_girl_add">女</label>
+                  </div>
+                  <!-- 男 -->
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="inline_boy_add" value="1" name="sex" required>
+                    <label class="form-check-label" for="inline_boy_add">男</label>
+                  </div>
+                </div>
+              </div>
+              <!-- 出生年月 -->
+              <div class="form-group row">
+                <label for="student_birth_add" class="col-sm-3 col-form-label">出生年月日：</label>
+                <div class="col-sm-9">
+                  <input type="date" class="form-control" id="student_birth_add" placeholder="请输入学生年龄" name="birth" required>
+                </div>
+              </div>
+              <!-- 居住地-->
+              <div class="form-group row">
+                <label for="student_address_add" class="col-sm-3 col-form-label">居住地：</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="student_address_add" name="address" required>
+                </div>
+              </div>
+              <!-- 爱好 -->
+              <div class="form-group row">
+                <label for="student_hobbies_add" class="col-sm-3 col-form-label">爱好：</label>
+                <div class="col-sm-9">
+                  <textarea class="form-control" id="student_hobbies_add" rows="3" name="hobbies"></textarea>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- 修改个人信息 模态框 -->
+<form action="/modifyInfo" method="post">
+  <div class="modal fade" id="modify_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">您正在修改 <strong id="modify_modal_title_name">张三</strong> 的个人信息</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <!-- id -->
+            <div class="form-group row" hidden>
+              <label for="stu_id_modify" class="col-sm-3 col-form-label">id：</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="stu_id_modify" id="student_id_modify" value="">
+              </div>
+            </div>
+            <!-- 姓名 -->
+            <div class="form-group row">
+              <label for="student_name_modify" class="col-sm-3 col-form-label">姓名：</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control-plaintext" name="stu_name_modify" id="student_name_modify" value="张三" readonly disabled>
+              </div>
+            </div>
+            <!-- 性别 -->
+            <div id="stu_general_box" class="form-group row  align-items-center">
+              <label for="inputPassword" class="col-sm-3 col-form-label">性别：</label>
+              <div class="col-sm-9">
+                <!-- 女 -->
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" checked type="radio" id="inline_girl_onlyread" value="0" name="sex" disabled>
+                  <label class="form-check-label" for="inline_girl_onlyread">女</label>
+                </div>
+                <!-- 男 -->
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="inline_boy_onlyread" value="1" name="sex" disabled>
+                  <label class="form-check-label"  for="inline_boy_onlyread">男</label>
+                </div>
+              </div>
+            </div>
+            <!-- 出生年月 -->
+            <div class="form-group row">
+              <label for="date_read_only" class="col-sm-3 col-form-label">出生年月日：</label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control-plaintext" id="date_read_only" name="stu_birth_modify" value="2021-04-23" placeholder="请输入学生年龄" readonly disabled>
+              </div>
+            </div>
+            <!-- 居住地-->
+            <div class="form-group row">
+              <label for="student_address_modify" class="col-sm-3 col-form-label">居住地：</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="student_address_modify" name="stu_addr_modify" value="河北省石家庄市井陉县">
+              </div>
+            </div>
+            <!-- 爱好 -->
+            <div class="form-group row">
+              <label for="student_hobbies_modify" class="col-sm-3 col-form-label">爱好：</label>
+              <div class="col-sm-9">
+                <textarea class="form-control" id="student_hobbies_modify" name="stu_hobbies_modify"rows="3">吃饭、睡觉、打豆豆</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- 删除个人信息 模态框 -->
+<form action="/deleteInfo" method="post">
+  <div class="modal fade" id="delete_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">删除个人信息</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- id -->
+            <div class="form-group row" style="display: none;">
+              <label for="student_id_delete" class="col-sm-3 col-form-label">id：</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="stu_id_delete" id="student_id_delete" value="">
+              </div>
+            </div>
+            <p>确定要删除 <strong id="stu_name_delete">张三</strong> 的个人信息吗？</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-primary">确认</button>
+          </div>
+        </div>  
+    </div>
+  </div>
+</form>
+
+</body>
+  <script src="/public/js/jquery.js"></script>
+  <script src="/public/lib/bootstrap-4.6.0-dist/js/popper.min.js"></script>
+  <script src="/public/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+  <!-- <script src="/public/lib/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script> -->
+  <script>
+    // 添加弹窗
+    function addFunctionToModal(btnClassName) {
+      let btn = document.querySelectorAll("."+btnClassName);
+
+      for(let i = 0 ; i  < btn.length; i ++) {
+        btn[i].addEventListener("click", function(e) {
+          let id = parseInt(e.path[3].querySelector(".stuId").innerText);
+        })
+      }
+    }
+    addFunctionToModal("add-btn");
+
+    //修改弹窗
+    function addMseToModal(btnClassName) {
+      let btn = document.querySelectorAll("."+btnClassName);
+      for(let i = 0; i < btn.length; i ++) {
+        btn[i].addEventListener("click", function(e) {
+          //获取当前行数据
+          let td = e.path[3].querySelectorAll("td");
+          let id = parseInt(e.path[3].querySelector(".stuId").innerText);
+          let stuName = e.path[3].querySelector(".stu-name").innerText;
+          let stuGender = e.path[3].querySelector(".stu-gender").innerText;
+          let stuBirth = e.path[3].querySelector(".stu-birth").innerText;
+          let stuHobbies = e.path[3].querySelector(".stu-hibbies").innerText;
+          let stuAddr = e.path[3].querySelector(".stu-addr").innerText;
+
+          //获取模态框，并写入内容
+          let modalBox = document.getElementById("modify_modal");
+          let modal_title_name = document.getElementById("modify_modal_title_name");
+          let stuIdBox = modalBox.querySelector("#student_id_modify"); //id
+
+          let general = modalBox.querySelector("#stu_general_box");   //性别盒子
+          let general_nv = general.querySelector("#inline_girl_onlyread");
+          let general_nan = general.querySelector("#inline_boy_onlyread");
+          let generalInput = general.querySelectorAll("input"); //单选
+
+          let stuModalName = modalBox.querySelector("#student_name_modify"); // name
+          let stuModalBirth = modalBox.querySelector("#date_read_only"); //birth
+          let stuModalAddr = modalBox.querySelector("#student_address_modify"); //addr
+          stuModalAddr.value = "";
+          let stuModalHobbies = modalBox.querySelector("#student_hobbies_modify"); //hobbies
+          stuModalHobbies.innerText = "";
+
+          //处理
+          stuIdBox.value = id;
+          stuModalName.value = stuName;
+          modal_title_name.innerText = stuName;
+
+          //处理性别框
+          for(let i = 0; i < generalInput.length; i ++) {
+            console.log
+            generalInput[i].checked = false;
+          }
+          if(stuGender == "女") {
+            general_nv.checked = true;
+          } else if(stuGender == "男"){
+            general_nan.checked = true;
+          }
+
+          stuModalBirth.value = stuBirth;
+          stuModalAddr.value = stuAddr;
+          stuModalHobbies.innerText = stuHobbies;
+
+        })
+      }
+    }
+    addMseToModal("modify-btn");
+
+    //删除弹窗
+    function addDeleteToModal(btnClassName) {
+      let btn = document.querySelectorAll("."+btnClassName);
+      for(let i = 0; i < btn.length; i ++) {
+        btn[i].addEventListener("click", function(e) {
+          let id = parseInt(e.path[3].querySelector(".stuId").innerText);
+          let stuName = e.path[3].querySelector(".stu-name").innerText;
+
+          let modalBox = document.getElementById("modify_modal");
+          let modalId = document.getElementById("student_id_delete");
+          let modalName = document.getElementById("stu_name_delete");
+
+          modalName.innerText = stuName;
+          modalId.value = id;
+        })
+      }
+    }
+    addDeleteToModal("delete-btn");
+  </script>
+</html>

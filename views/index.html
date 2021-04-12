@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index.html</title>
+    <link rel="stylesheet" href="/public/css/main.css">
+</head>
+<body>
+    <div class="contain">
+        <h1 class="title">{{ title }}</h1>
+        <p class="contain-item">我叫{{ name }}</p>
+        <p class="contain-item">我今年{{ age }}岁了</p>
+        <p class="contain-item">我喜欢{{ each hobbies}} {{ $value }} {{ /each }}</p>
+        <p class="contain-item"> <a href= {{link}}>这是我的微博链接:</a></p>
+        {{ each friends}}
+            <p class="contain-item">友情链接：
+                <a href="{{ $value.link }}">{{ $value.name }}: {{ $value.link }}</a>
+            </p>
+        {{ /each }}
+        <p class="contain-item">
+            <a href="/post" class="button">点击添加友情链接</a>
+        </p>
+        <p class="contain-item">
+            <a href="/student" class="button">点击转入用户列表</a>
+        </p>
+    </div>
+</body>
+<script src="/public/js/main.js"></script>
+<script src="/public/js/jquery.js"></script>
+</html>
