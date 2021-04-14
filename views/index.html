@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>index.html</title>
-    <link rel="stylesheet" href="/public/css/main.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>index.html</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="/public/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/public/css/main.css">
+    </head>
 <body>
-    <div class="contain">
+    <!-- <div class="contain">
         <h1 class="title">{{ title }}</h1>
         <p class="contain-item">我叫{{ name }}</p>
         <p class="contain-item">我今年{{ age }}岁了</p>
@@ -23,8 +27,41 @@
         <p class="contain-item">
             <a href="/student" class="button">点击转入用户列表</a>
         </p>
+    </div> -->
+    <div class="container">
+        <h1 class="display-1 text-center">{{title}}</h1>
+        {{ each friends}}
+        <a href="{{ $value.link}}">
+            <blockquote class="blockquote text-left">
+              <p class="mb-0">{{ $value.link}}</p>
+              <footer class="blockquote-footer">author: <cite title="{{ $value.name}}">{{ $value.name}}</cite></footer>
+            </blockquote>
+        </a>
+        {{ /each }}
+
+        <h5>友情链接：</h5>
+        <div class="friends-card">
+            {{ each friends}}
+            <a href="{{ $value.link}}" class="card" style="display: block;">
+                <div class="card-body">
+                    <blockquote class="blockquote text-justify">
+                      <p class="mb-0 friends-info">{{ $value.link}}</p>
+                    </blockquote>
+                    <div class="friends-card-btn"> 
+                        <footer class="blockquote-footer text-right">author: 
+                            <cite title="{{ $value.name}}">{{ $value.name}}</cite>
+                        </footer>
+                    </div>
+                </div>
+            </a>
+            {{ /each}}
+        </div>
     </div>
+
 </body>
-<script src="/public/js/main.js"></script>
-<script src="/public/js/jquery.js"></script>
+    <!--<script src="/public/js/main.js"></script>
+    <script src="/public/js/jquery.js"></script> -->
+    <script src="/public/js/jquery.js"></script>
+    <script src="/public/lib/bootstrap-4.6.0-dist/js/popper.min.js"></script>
+    <script src="/public/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
 </html>

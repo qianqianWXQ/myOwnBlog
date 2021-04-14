@@ -32,7 +32,7 @@ var fs = require('fs');
 // 2. 创建一个路由容器
 var router = express.Router();
 var myFriends = [
-    {name: "baidu", link:"www.baidu.com"},
+    {name: "baidu", link:"https://www.baidu.com", info: ""},
     {name: "oschina", link:"https://tool.oschina.net/commons"},
     {name: "cnblogs", link:"https://w.cnblogs.com/2050/p/3877280.html"},
     {name: "csdn", link:"https://mp.csdn.net/console/article"},
@@ -71,7 +71,6 @@ router.get('/post',function(req, res) {
 
 //渲染 get表单提交页面
 router.get('/add', function(req, res) {
-    console.log(req.query);
     myFriends.push(req.query);
     res.redirect("/");
 })
