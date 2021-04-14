@@ -31,7 +31,10 @@ var fs = require('fs');
 
 // 2. 创建一个路由容器
 var router = express.Router();
+
+//首页 友情链接信息 ---> 待整理
 var myFriends = [
+    {name: "洛洛的空间", link:"https://www.luoluolzb.cn/", info: ""},
     {name: "baidu", link:"https://www.baidu.com", info: ""},
     {name: "oschina", link:"https://tool.oschina.net/commons"},
     {name: "cnblogs", link:"https://w.cnblogs.com/2050/p/3877280.html"},
@@ -47,26 +50,29 @@ function organizeTheStudentId(arr) {
 
 // 3. 把路由都挂载到router路由容器中
 
-//渲染个人主页 首页
+//渲染 首页
 router.get('/', function(req, res) {
    res.render('./index.html', {
-        name: "Jack",
-        age: 13,
-        hobbies:[
-            "code",
-            "write",
-            "listen",
-            "read"
-        ],
-        title: "Self Message",
-        link: "/view/blog",
+        title: "welcom ~",
+        leadContaint: "Introduction to the website",
+        more: "更多",
         friends: myFriends
     });
 })
 
+//渲染个人主页
+router.get('/selfInfo', function(req, res) {
+    res.render('./selfInfo.html')
+})
+
 //渲染 添加友情链接页面
-router.get('/post',function(req, res) {
-    res.render("./post.html");
+router.get('/addFriendLink',function(req, res) {
+    res.render("./addFriendLink.html");
+})
+
+//渲染 修改友情链接页面
+router.get('/modifyFriendLink',function(req, res) {
+    res.render("./modifyFriendLink.html");
 })
 
 //渲染 get表单提交页面
@@ -92,7 +98,7 @@ router.get('/student', function(req, res) {
     })
 })
 
-//处理添加 功能
+//处理 学生数据首页 学生列表 添加 功能
 router.post('/student/addInfo', function(req, res) {
     // 1. 获取表单数据
     // 2. 处理
@@ -126,8 +132,8 @@ router.post('/student/addInfo', function(req, res) {
     })
 })
 
-//处理修改功能
-router.post("/modifyInfo", function(req, res) {
+//处理 学生数据首页 学生列表 修改 功能
+router.post("/student/modifyInfo", function(req, res) {
     fs.readFile("./db.json", function(err, data) {
         if(err) {
             return res.status(500).send('Sever err');
@@ -152,8 +158,8 @@ router.post("/modifyInfo", function(req, res) {
     })
 })
 
-//处理删除功能
-router.post("/deleteInfo", function(req, res) {
+//处理 学生数据首页 学生列表 删除 功能
+router.post("/student/deleteInfo", function(req, res) {
     fs.readFile("./db.json", function(err, data) {
         if(err) {
             return res.status(500).send('Sever err');

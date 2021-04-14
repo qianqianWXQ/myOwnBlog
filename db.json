@@ -119,5 +119,28 @@
         "birth": "2021-04-08",
         "location": "湖北省黄冈市蕲春县",
         "hobbies": ""
+    }
+    ], "myFriends": [
+    {
+        "name": "洛洛的空间",
+        "link": "https://www.luoluolzb.cn/",
+        "info": ""
+    },
+    {
+        "name": "baidu",
+        "link": "https://www.baidu.com",
+        "info": ""
+    },
+    {
+        "name": "oschina",
+        "link": "https://tool.oschina.net/commons"
+    },
+    {
+        "name": "cnblogs",
+        "link": "https://w.cnblogs.com/2050/p/3877280.html"
+    },
+    {
+        "name": "csdn",
+        "link": "https://mp.csdn.net/console/article"
     }]
 }

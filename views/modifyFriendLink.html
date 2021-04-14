@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>index.html</title>
+<head>
+    <meta charset="UTF-8">
+    <title>post.html</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link href="/public/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="/public/css/index.css">
-    </head>
+    <link href="/public/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/addFriendLink.css">
+    <!-- <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/post.css"> -->
+</head>
 <body>
     <!-- 顶部导航 -->
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg text-light mb-4">
@@ -69,48 +71,40 @@
             </div>
         </div>
     </nav>
-    <!-- 主要内容部分 -->
+
+    <!-- 主要内容 -->
     <div class="container">
-        <!-- 巨幕 -->
-        <div class="jumbotron">
-            <h1 class="display-4">{{ title }}</h1>
-            <p class="lead">{{ leadContaint }}</p>
-            <hr class="my-4">
-            <p></p>
-            <a class="btn btn-primary btn-lg"  href="/selfInfo" role="button">{{ more }}</a>
-        </div>
-        <!-- 友链 -->
-        <div class="friendship-link">
-            <h5>
-                <a href="/addFriendLink" class="friendship-link-add" data-toggle="tooltip" data-placement="right" title="点击添加友情链接">友情链接：</a>
-            </h5>
-            <div class="friends-card">
-                {{ each friends}}
-                <div class="card friend-card-contain">
-                    <div class="card-body">
-                        <a href="/modifyFriendLink" class="card-link btn-success">修改</a>
-                        <a href="{{ $value.link}}">
-                            <blockquote class="blockquote text-justify">
-                              <p class="mb-0 friends-info">{{ $value.link}}</p>
-                            </blockquote>
-                            <div class="friends-card-author"> 
-                                <footer class="blockquote-footer text-right">author: 
-                                    <cite title="{{ $value.name}}">{{ $value.name}}</cite>
-                                </footer>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                {{ /each}}
-            </div>
-        </div>
+        <!-- 面包屑导航 -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">当前位置：首页</li>
+            <li class="breadcrumb-item active" aria-current="page">修改友情链接</li>
+          </ol>
+        </nav>
+        <h4 class="text-left friend-link-title">修改友情链接</h4>
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">friend name</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">friend link</label>
+            <input type="text" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">friend Info</label>
+            <input type="text" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="form-group form-check text-right">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">click to modify</button>
+          </div>
+        </form>
     </div>
 </body>
-    <script src="/public/js/jquery.js"></script>
-    <script src="/public/lib/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(function () {
-          $('[data-toggle="tooltip"]').tooltip()
-        })
-    </script>
+<script src="/public/js/jquery.js"></script>
+<script src="/public/lib/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
 </html>

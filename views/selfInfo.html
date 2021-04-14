@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>index.html</title>
+        <title>selfInfo.html</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -10,6 +10,24 @@
         <link rel="stylesheet" href="/public/css/index.css">
     </head>
 <body>
+    <!-- <div class="contain">
+        <h1 class="title">{{ title }}</h1>
+        <p class="contain-item">我叫{{ name }}</p>
+        <p class="contain-item">我今年{{ age }}岁了</p>
+        <p class="contain-item">我喜欢{{ each hobbies}} {{ $value }} {{ /each }}</p>
+        <p class="contain-item"> <a href= {{link}}>这是我的微博链接:</a></p>
+        {{ each friends}}
+            <p class="contain-item">友情链接：
+                <a href="{{ $value.link }}">{{ $value.name }}: {{ $value.link }}</a>
+            </p>
+        {{ /each }}
+        <p class="contain-item">
+            <a href="/post" class="button">点击添加友情链接</a>
+        </p>
+        <p class="contain-item">
+            <a href="/student" class="button">点击转入用户列表</a>
+        </p>
+    </div> -->
     <!-- 顶部导航 -->
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg text-light mb-4">
         <div class="container-fluid">
@@ -71,46 +89,17 @@
     </nav>
     <!-- 主要内容部分 -->
     <div class="container">
-        <!-- 巨幕 -->
-        <div class="jumbotron">
-            <h1 class="display-4">{{ title }}</h1>
-            <p class="lead">{{ leadContaint }}</p>
-            <hr class="my-4">
-            <p></p>
-            <a class="btn btn-primary btn-lg"  href="/selfInfo" role="button">{{ more }}</a>
-        </div>
-        <!-- 友链 -->
-        <div class="friendship-link">
-            <h5>
-                <a href="/addFriendLink" class="friendship-link-add" data-toggle="tooltip" data-placement="right" title="点击添加友情链接">友情链接：</a>
-            </h5>
-            <div class="friends-card">
-                {{ each friends}}
-                <div class="card friend-card-contain">
-                    <div class="card-body">
-                        <a href="/modifyFriendLink" class="card-link btn-success">修改</a>
-                        <a href="{{ $value.link}}">
-                            <blockquote class="blockquote text-justify">
-                              <p class="mb-0 friends-info">{{ $value.link}}</p>
-                            </blockquote>
-                            <div class="friends-card-author"> 
-                                <footer class="blockquote-footer text-right">author: 
-                                    <cite title="{{ $value.name}}">{{ $value.name}}</cite>
-                                </footer>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                {{ /each}}
-            </div>
-        </div>
+        <!-- 用户列表 -->
+        <h5 class="text-left">个人信息</h5>
+        <blockquote class="blockquote text-left">
+            <a href="/student">
+                <p class="mb-0">点击进入用户列表/p>
+            </a>
+              <footer class="blockquote-footer">本系统的用户列表</cite>
+            </footer>
+        </blockquote>
     </div>
 </body>
     <script src="/public/js/jquery.js"></script>
     <script src="/public/lib/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        $(function () {
-          $('[data-toggle="tooltip"]').tooltip()
-        })
-    </script>
 </html>

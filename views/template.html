@@ -252,7 +252,7 @@
 </form>
 
 <!-- 修改个人信息 模态框 -->
-<form action="/modifyInfo" method="post">
+<form action="/student/modifyInfo" method="post">
   <div class="modal fade" id="modify_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -327,7 +327,7 @@
 </form>
 
 <!-- 删除个人信息 模态框 -->
-<form action="/deleteInfo" method="post">
+<form action="/student/deleteInfo" method="post">
   <div class="modal fade" id="delete_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -358,9 +358,7 @@
 
 </body>
   <script src="/public/js/jquery.js"></script>
-  <script src="/public/lib/bootstrap-4.6.0-dist/js/popper.min.js"></script>
-  <script src="/public/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
-  <!-- <script src="/public/lib/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script> -->
+  <script src="/public/lib/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // 添加弹窗
     function addFunctionToModal(btnClassName) {
